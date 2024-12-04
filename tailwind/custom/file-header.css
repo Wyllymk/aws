@@ -1,8 +1,8 @@
 /*!
-Theme Name: aws
+Theme Name: AWS
 Theme URI: https://atomicwebspace.com
 Author: Wilson
-Author URI: https://underscoretw.com/
+Author URI: https://wilsondevops.com/
 Description: A custom blog theme
 Version: 0.1.0
 Tested up to: 6.2
@@ -10,14 +10,23 @@ Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: aws
-Tags:
+Tags: Custom, Portfolio, Tailwind CSS, Alpine.js, Translation-Ready, Responsive, Minimalistic, Accessibility
+License Note: This theme, like WordPress, is licensed under the GPL.
+License Details: Use it to build something cool, have fun, and share your learning.
 
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned.
+Tech Stack:
+- **Tailwind CSS**: A utility-first CSS framework for creating responsive, customizable designs.
+- **Alpine.js**: A minimal framework for adding interactivity to your site with a lightweight footprint.
+- **WordPress**: The most popular content management system for building websites and blogs.
+- **_tw**: A minimal theme starter based on _s (Underscores) and enhanced with modern workflows.
 
-aws is based on _tw https://underscoretw.com/, (C) 2021-2024 Greg Sullivan
-_tw is distributed under the terms of the GNU GPL v2 or later.
+Based on _tw (https://underscoretw.com/), Copyright (C) 2021-2024 Greg Sullivan.
+_tw is distributed under the terms of the GNU General Public License v2 or later.
 
-_tw is based on Underscores https://underscores.me/ and Varia https://github.com/Automattic/themes/tree/master/varia, (C) 2012-2023 Automattic, Inc.
-Underscores and Varia are distributed under the terms of the GNU GPL v2 or later.
+Originally based on Underscores (https://underscores.me/) and Varia (https://github.com/Automattic/themes/tree/master/varia), Copyright (C) 2012-2023 Automattic, Inc.
+Underscores and Varia are distributed under the terms of the GNU General Public License v2 or later.
+
+Additional Credits:
+- **Tailwind CSS**: https://tailwindcss.com
+- **Alpine.js**: https://alpinejs.dev
 */

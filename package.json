@@ -53,5 +53,8 @@
 		"zip": "node node_scripts/zip.js aws",
 		"bundle": "run-s production zip"
 	},
-	"prettier": "@wordpress/prettier-config"
+	"prettier": "@wordpress/prettier-config",
+	"dependencies": {
+		"alpinejs": "^3.14.6"
+	}
 }

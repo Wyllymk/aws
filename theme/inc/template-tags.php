@@ -6,6 +6,8 @@
  *
  * @package aws
  */
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 if ( ! function_exists( 'aws_posted_on' ) ) :
 	/**
@@ -196,19 +198,19 @@ if ( ! function_exists( 'aws_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<figure>
-				<?php the_post_thumbnail(); ?>
-			</figure><!-- .post-thumbnail -->
+<figure>
+			<?php the_post_thumbnail(); ?>
+</figure><!-- .post-thumbnail -->
 
 			<?php
 		else :
 			?>
 
-			<figure>
-				<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-					<?php the_post_thumbnail(); ?>
-				</a>
-			</figure>
+<figure>
+	<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+			<?php the_post_thumbnail(); ?>
+	</a>
+</figure>
 
 			<?php
 		endif; // End is_singular().

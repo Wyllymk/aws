@@ -11,21 +11,23 @@
  *
  * @package aws
  */
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
 
-	<section id="primary">
-		<main id="main">
+<section id="primary">
+	<main id="main">
 
 		<?php
 		if ( have_posts() ) {
 
 			if ( is_home() && ! is_front_page() ) :
 				?>
-				<header class="entry-header">
-					<h1 class="entry-title"><?php single_post_title(); ?></h1>
-				</header><!-- .entry-header -->
+		<header class="entry-header">
+			<h1 class="entry-title"><?php single_post_title(); ?></h1>
+		</header><!-- .entry-header -->
 				<?php
 			endif;
 
@@ -46,8 +48,8 @@ get_header();
 		}
 		?>
 
-		</main><!-- #main -->
-	</section><!-- #primary -->
+	</main><!-- #main -->
+</section><!-- #primary -->
 
 <?php
 get_footer();

@@ -6,6 +6,8 @@
  *
  * @package aws
  */
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 if ( ! defined( 'AWS_VERSION' ) ) {
 	/*

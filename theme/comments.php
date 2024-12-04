@@ -9,6 +9,8 @@
  *
  * @package aws
  */
+// Exit if accessed directly
+defined( 'ABSPATH' ) || exit;
 
 /*
  * If the current post is protected by a password and the visitor has not yet
@@ -24,34 +26,34 @@ if ( post_password_required() ) {
 	<?php
 	if ( have_comments() ) :
 		?>
-		<h2>
-			<?php
+	<h2>
+		<?php
 			$aws_comment_count = get_comments_number();
-			if ( '1' === $aws_comment_count ) {
-				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One comment on &ldquo;%1$s&rdquo;', 'aws' ),
-					get_the_title()
-				);
-				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
-			} else {
-				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-				printf(
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', $aws_comment_count, 'comments title', 'aws' ) ),
-					number_format_i18n( $aws_comment_count ),
-					get_the_title()
-				);
-				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
-			}
-			?>
-		</h2>
+		if ( '1' === $aws_comment_count ) {
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf(
+				/* translators: 1: title. */
+				esc_html__( 'One comment on &ldquo;%1$s&rdquo;', 'aws' ),
+				get_the_title()
+			);
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			printf(
+				/* translators: 1: comment count number, 2: title. */
+				esc_html( _nx( '%1$s comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', $aws_comment_count, 'comments title', 'aws' ) ),
+				number_format_i18n( $aws_comment_count ),
+				get_the_title()
+			);
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+		?>
+	</h2>
 
 		<?php the_comments_navigation(); ?>
 
-		<ol>
-			<?php
+	<ol>
+		<?php
 			wp_list_comments(
 				array(
 					'style'      => 'ol',
@@ -59,8 +61,8 @@ if ( post_password_required() ) {
 					'short_ping' => true,
 				)
 			);
-			?>
-		</ol>
+		?>
+	</ol>
 
 		<?php
 		the_comments_navigation();
@@ -69,7 +71,7 @@ if ( post_password_required() ) {
 		// message.
 		if ( ! comments_open() ) :
 			?>
-			<p><?php esc_html_e( 'Comments are closed.', 'aws' ); ?></p>
+	<p><?php esc_html_e( 'Comments are closed.', 'aws' ); ?></p>
 			<?php
 		endif;
 
