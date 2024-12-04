@@ -29,7 +29,7 @@ require 'inc/update/plugin-update-checker.php';
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://github.com/wyllymk/aws/',
+	'https://github.com/Wyllymk/aws-prod/',
 	__FILE__,
 	'aws'
 );
