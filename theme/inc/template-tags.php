@@ -14,18 +14,21 @@ if ( ! function_exists( 'aws_posted_on' ) ) :
 	 * Prints HTML with meta information for the current post-date/time.
 	 */
 	function aws_posted_on() {
-		$time_string = '<time datetime="%1$s">%2$s</time>';
 		if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
-			$time_string = '<time datetime="%1$s">%2$s</time><time datetime="%3$s">%4$s</time>';
+			// Use the modified date if it exists and differs from the publish date.
+			$time_string = sprintf(
+				'<time datetime="%1$s" style="margin-right: 5px;">%2$s</time>',
+				esc_attr( get_the_modified_date( DATE_W3C ) ),
+				esc_html( get_the_modified_date() )
+			);
+		} else {
+			// Otherwise, use the publish date.
+			$time_string = sprintf(
+				'<time datetime="%1$s" style="margin-right: 10px;">%2$s</time>',
+				esc_attr( get_the_date( DATE_W3C ) ),
+				esc_html( get_the_date() )
+			);
 		}
-
-		$time_string = sprintf(
-			$time_string,
-			esc_attr( get_the_date( DATE_W3C ) ),
-			esc_html( get_the_date() ),
-			esc_attr( get_the_modified_date( DATE_W3C ) ),
-			esc_html( get_the_modified_date() )
-		);
 
 		printf(
 			'<a href="%1$s" rel="bookmark">%2$s</a>',
@@ -71,12 +74,12 @@ if ( ! function_exists( 'aws_entry_meta' ) ) :
 
 		// Hide author, post date, category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
+			
+			// Posted on.
+			aws_posted_on();
 
 			// Posted by.
 			aws_posted_by();
-
-			// Posted on.
-			aws_posted_on();
 
 			/* translators: used between list items, there is a space after the comma. */
 			$categories_list = get_the_category_list( __( ', ', 'aws' ) );
@@ -199,20 +202,20 @@ if ( ! function_exists( 'aws_post_thumbnail' ) ) :
 			?>
 
 <figure>
-			<?php the_post_thumbnail(); ?>
+    <?php the_post_thumbnail(); ?>
 </figure><!-- .post-thumbnail -->
 
-			<?php
+<?php
 		else :
 			?>
 
 <figure>
-	<a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-			<?php the_post_thumbnail(); ?>
-	</a>
+    <a href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
+        <?php the_post_thumbnail(); ?>
+    </a>
 </figure>
 
-			<?php
+<?php
 		endif; // End is_singular().
 	}
 endif;
@@ -306,3 +309,24 @@ if ( ! function_exists( 'aws_content_class' ) ) :
 		echo 'class="' . esc_attr( implode( ' ', $combined_classes ) ) . '"';
 	}
 endif;
+
+if ( ! function_exists( 'aws_category_badge' ) ) :
+	function aws_category_badge() {
+	  // Hide category and tag text for pages.
+	  if ( 'post' === get_post_type() ) {
+		echo '<p class="category-badge space-x-2">';
+		$thelist = '';
+		$i       = 0;
+		foreach ( get_the_category() as $category ) {
+		  if ( 0 < $i ) $thelist .= ' ';
+		  // Apply a filter to modify the class name
+		  $class = apply_filters( 'aws/class/badge/category', 'inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-md text-sm' );
+		  $thelist .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" class="' . esc_attr( $class ) . '">' . $category->name . '</a>';
+		  $i++;
+		}
+		echo $thelist;
+		echo '</p>';
+	  }
+	}
+  endif;
+  

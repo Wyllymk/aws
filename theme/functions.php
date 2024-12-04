@@ -20,6 +20,24 @@ if ( ! defined( 'AWS_VERSION' ) ) {
 	define( 'AWS_VERSION', '0.1.0' );
 }
 
+
+/**
+ * Update Checker
+ * https://github.com/YahnisElsts/plugin-update-checker
+ */
+require 'inc/update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/wyllymk/aws/',
+	__FILE__,
+	'aws'
+);
+
+// Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('main');
+
+
 if ( ! defined( 'AWS_TYPOGRAPHY_CLASSES' ) ) {
 	/*
 	 * Set Tailwind Typography classes for the front end, block editor and
