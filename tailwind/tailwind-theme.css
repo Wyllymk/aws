@@ -1,0 +1,58 @@
+/**
+ * Add your design tokens as Tailwind theme variables.
+ *
+ * https://tailwindcss.com/docs/theme
+ */
+
+/**
+ * Import Tailwind’s default theme.
+ */
+@import "tailwindcss/theme";
+
+/**
+  * Your theme variables are merged with Tailwind’s defaults, either extending
+  * the default theme with new variables or overriding the values of existing
+  * variables.
+  */
+@theme {
+	/**
+	  * These theme variables use CSS variables set by WordPress using values
+	  * from your `theme.json` file.
+	  *
+	  * If you are using the classic editor, you may need to use hardcoded
+	  * color values instead of the `var()` functions below.
+	  */
+	--color-background: var(--wp--preset--color--background);
+	--color-foreground: var(--wp--preset--color--foreground);
+	--color-primary: var(--wp--preset--color--primary);
+	--color-secondary: var(--wp--preset--color--secondary);
+	--color-tertiary: var(--wp--preset--color--tertiary);
+	--container-content: var(--wp--style--global--content-size);
+	--container-wide: var(--wp--style--global--wide-size);
+
+	/**
+	  * Add your theme below:
+	  */
+	/*Images*/
+	--image-hero: url("../bet-vault/assets/img/hero.png");
+	--image-winnings: url("../bet-vault/assets/img/winnings.png");
+	--image-bankroll: url("../bet-vault/assets/img/bankroll.png");
+	--image-risk: url("../bet-vault/assets/img/risk.png");
+	--image-faq: url("../bet-vault/assets/img/faq.png");
+	--image-checkout: url("../bet-vault/assets/img/checkout.png");
+	--image-challenge: url("../bet-vault/assets/img/challenge.png");
+	/*Shadows*/
+	--drop-shadow-white-glow: 0 0 5px rgba(255, 255, 255, 1);
+	--drop-shadow-brass-nail: 0 0 5px rgba(219, 195, 118, 1);
+	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);
+	/*Fonts*/
+	--font-aeonik-light: "Aeonik-light", sans-serif;
+	--font-sans: "Aeonik-medium", system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	--font-aeonik-bold: "Aeonik-bold", sans-serif;
+	/*Colors*/
+	--color-mustard-gold: rgba(112, 102, 36, 1);
+	--color-brass-nail: rgba(219, 195, 118, 1);
+}
