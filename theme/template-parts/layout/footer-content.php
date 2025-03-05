@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
                         class="h-12">
                 </a>
                 <p class="text-gray-400 text-sm">
-                    <?php esc_html_e('Your source for the latest tech news, reviews, and insights. Stay ahead with cutting-edge content.', 'atomic-web-space'); ?>
+                    <?php echo esc_html(get_bloginfo('description')); ?>
                 </p>
             </div>
 
@@ -86,10 +86,15 @@ defined( 'ABSPATH' ) || exit;
         <div class="text-center text-gray-400 text-sm">
             <p>
                 <?php
-        $start_year = 2023;
-        $current_year = date('Y');
-        printf(esc_html__('© %d - %d. All Rights Reserved.', 'atomic-web-space'), $start_year, $current_year);
-        ?>
+                $start_year = 2023;
+                $current_year = date('Y');
+                printf(
+                    esc_html__('© %d - %d | <a href="%s">AWS</a> | All Rights Reserved.', 'atomic-web-space'),
+                    $start_year,
+                    $current_year,
+                    esc_url(home_url('/'))
+                );
+                ?>
             </p>
         </div>
 
