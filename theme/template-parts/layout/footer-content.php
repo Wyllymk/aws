@@ -89,7 +89,7 @@ defined( 'ABSPATH' ) || exit;
                 $start_year = 2023;
                 $current_year = date('Y');
                 printf(
-                    esc_html__('© %d - %d | <a href="%s">AWS</a> | All Rights Reserved.', 'atomic-web-space'),
+                    __('© %d - %d | <a class="text-blue-400 hover:text-blue-300" href="%s">AWS</a> | All Rights Reserved.', 'atomic-web-space'),
                     $start_year,
                     $current_year,
                     esc_url(home_url('/'))
