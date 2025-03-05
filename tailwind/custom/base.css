@@ -23,3 +23,6 @@ body {
 .comment-content p {
 	@apply text-blue-300;
 }
+.comment-form-cookies-consent {
+	@apply text-white;
+}
