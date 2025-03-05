@@ -13,9 +13,10 @@ get_header();
 ?>
 
 <!-- Progress Bar -->
-<div class="fixed top-0 left-0 w-full h-1 bg-gray-800 z-30">
+<div class="fixed top-18 left-0 w-full h-1 bg-gray-800 z-30">
     <div id="reading-progress" class="h-full bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300"
-        style="width: 0%;"></div>
+        style="width: 0%;">
+    </div>
 </div>
 
 <section id="primary" class="relative bg-gray-900 py-16 overflow-hidden">
@@ -27,10 +28,10 @@ get_header();
 
     <main id="main" class="relative container mx-auto px-4 max-w-4xl z-10">
         <?php
-    /* Start the Loop */
-    while (have_posts()) :
-      the_post();
-    ?>
+        /* Start the Loop */
+        while (have_posts()) :
+        the_post();
+        ?>
         <!-- Post Content -->
         <article <?php post_class('bg-gray-800 rounded-xl shadow-lg overflow-hidden'); ?>>
             <!-- Featured Image -->
@@ -69,12 +70,12 @@ get_header();
             <!-- Post Content -->
             <div class="p-8 prose prose-invert max-w-none text-gray-200">
                 <?php
-          the_content();
-          wp_link_pages([
-            'before' => '<div class="page-links">' . esc_html__('Pages:', 'atomic-web-space'),
-            'after'  => '</div>',
-          ]);
-          ?>
+                the_content();
+                wp_link_pages([
+                    'before' => '<div class="page-links">' . esc_html__('Pages:', 'atomic-web-space'),
+                    'after'  => '</div>',
+                ]);
+                ?>
             </div>
 
             <!-- Tags -->
@@ -116,7 +117,12 @@ get_header();
         </nav>
         <?php endif; ?>
 
-
+        <!-- Comments -->
+        <?php
+        if (comments_open() || get_comments_number()) :
+            comments_template();
+        endif;
+        ?>
 
         <!-- Similar Blogs -->
         <div class="mt-16">

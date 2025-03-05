@@ -314,8 +314,15 @@ get_header();
                                     <?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
                                 <div class="flex items-center justify-between">
                                     <span class="text-gray-300 text-xs"><?php echo get_the_date(); ?></span>
+                                    <?php 
+                                        $categories = get_the_category();
+                                        if (!empty($categories)) :
+                                    ?>
                                     <span
-                                        class="px-2 py-1 bg-blue-600/20 text-blue-200 rounded-full text-xs font-medium">Article</span>
+                                        class="px-2 py-1 bg-blue-600/20 text-blue-200 rounded-full text-xs font-medium">
+                                        <?php echo esc_html($categories[0]->name); ?>
+                                    </span>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

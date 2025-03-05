@@ -29,7 +29,7 @@ get_header();
             <h1 class="text-3xl md:text-4xl font-bold text-white">
                 <?php single_post_title(); ?>
             </h1>
-            <p class="text-gray-300 mt-2 text-lg">Your gateway to the latest tech insights</p>
+            <p class="text-gray-300 mt-2 text-lg">Your gateway to the latest WordPress insights</p>
         </header>
         <?php endif; ?>
 

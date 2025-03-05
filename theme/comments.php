@@ -23,7 +23,7 @@ if (post_password_required()) {
 
 <div id="comments" class="mt-12 bg-gray-800 rounded-xl shadow-lg p-6 md:p-8">
     <?php if (have_comments()) : ?>
-    <h2 class="text-2xl md:text-3xl font-bold text-white mb-6">
+    <h2 class="text-lg md:text-xl font-bold text-white mb-6">
         <?php
             $atomic_web_space_comment_count = get_comments_number();
             if ('1' === $atomic_web_space_comment_count) {
@@ -89,8 +89,8 @@ if (post_password_required()) {
     <!-- Comment Form -->
     <?php
     comment_form([
-        'title_reply'          => '<h3 class="text-2xl font-bold text-white mb-4">Leave a Comment</h3>',
-        'title_reply_to'       => '<h3 class="text-2xl font-bold text-white mb-4">Reply to %s</h3>',
+        'title_reply'          => '<h3 class="text-xl font-bold text-white mb-4">Leave a Comment</h3>',
+        'title_reply_to'       => '<h3 class="text-xl font-bold text-white mb-4">Reply to %s</h3>',
         'comment_notes_before' => '<p class="text-gray-300 mb-4">Your email address will not be published. Required fields are marked <span class="text-blue-300">*</span></p>',
         'class_form'           => 'space-y-6',
         'class_submit'         => 'bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 hover:shadow-lg',
@@ -103,52 +103,3 @@ if (post_password_required()) {
     ]);
     ?>
 </div><!-- #comments -->
-
-<?php
-// Custom Comment Display Function
-function atomic_web_space_html5_comment($comment, $args, $depth) {
-    $tag = ('div' === $args['style']) ? 'div' : 'li';
-    ?>
-<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>"
-    <?php comment_class('bg-gray-900 rounded-lg p-4 shadow-md'); ?>>
-    <div class="flex items-start space-x-4">
-        <!-- Avatar -->
-        <div class="flex-shrink-0">
-            <?php if ($args['avatar_size'] != 0) : ?>
-            <img src="<?php echo esc_url(get_avatar_url($comment, $args['avatar_size'])); ?>"
-                alt="<?php comment_author(); ?>" class="h-12 w-12 rounded-full border border-gray-700">
-            <?php endif; ?>
-        </div>
-        <!-- Comment Content -->
-        <div class="flex-1">
-            <div class="flex items-center justify-between">
-                <div>
-                    <span class="text-blue-300 font-semibold"><?php comment_author_link(); ?></span>
-                    <time class="block text-gray-400 text-sm" datetime="<?php comment_time('c'); ?>">
-                        <?php printf('%1$s at %2$s', get_comment_date(), get_comment_time()); ?>
-                    </time>
-                </div>
-                <?php if ('0' == $comment->comment_approved) : ?>
-                <span class="text-yellow-400 text-sm italic">Awaiting Moderation</span>
-                <?php endif; ?>
-            </div>
-            <div class="mt-2 text-gray-200">
-                <?php comment_text(); ?>
-            </div>
-            <div class="mt-2 text-gray-300 text-sm">
-                <?php
-                    comment_reply_link(array_merge($args, [
-                        'depth'      => $depth,
-                        'max_depth'  => $args['max_depth'],
-                        'reply_text' => '<span class="hover:text-blue-300 transition duration-300">Reply</span>',
-                        'before'     => '<span class="mr-2">',
-                        'after'      => '</span>',
-                    ]));
-                    edit_comment_link('<span class="hover:text-blue-300 transition duration-300">Edit</span>', '<span class="mr-2">', '</span>');
-                    ?>
-            </div>
-        </div>
-    </div>
-</<?php echo $tag; ?>>
-<?php
-}
