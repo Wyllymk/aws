@@ -6,6 +6,9 @@
  *
  * https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities
  */
+@utility bg-newsletter {
+	background-image: var(--image-newsletter);
+}
 .custom-shadow {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

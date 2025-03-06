@@ -253,7 +253,10 @@ get_header();
                     <!-- Categories -->
                     <div class="flex flex-wrap justify-center gap-4 mb-12">
                         <?php
-                        $categories = get_categories(['hide_empty' => true]);
+                        $categories = get_categories([
+                            'hide_empty' => true, // Still hide categories with no posts
+                            'number'     => 10    // Limit to 10 categories
+                        ]);
                         $first = true;
                         foreach ($categories as $category) :
                         ?>
@@ -265,8 +268,8 @@ get_header();
                         </button>
                         <?php
                             if ($first) {
-                            $first_category_slug = $category->slug;
-                            $first = false;
+                                $first_category_slug = $category->slug;
+                                $first = false;
                             }
                         endforeach;
                         ?>
@@ -429,8 +432,7 @@ get_header();
                 <!-- Background Effects -->
                 <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-gray-900 to-purple-900 opacity-80">
                 </div>
-                <div
-                    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/circuit-pattern.png')]">
+                <div class="absolute inset-0 opacity-30 bg-newsletter">
                 </div>
 
                 <!-- Content Container -->

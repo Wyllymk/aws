@@ -3,24 +3,3 @@
  *
  * These will be added immediately before Tailwind’s `base` layer.
  */
-
-@font-face {
-	font-family: "Aeonik-light";
-	font-weight: 300;
-	font-style: normal;
-	src: url("assets/fonts/Aeonik/AeonikTRIAL-Light.otf") format("opentype");
-}
-
-@font-face {
-	font-family: "Aeonik-medium";
-	font-weight: 400;
-	font-style: normal;
-	src: url("assets/fonts/Aeonik/AeonikTRIAL-Regular.otf") format("opentype");
-}
-
-@font-face {
-	font-family: "Aeonik-bold";
-	font-weight: 700;
-	font-style: normal;
-	src: url("assets/fonts/Aeonik/AeonikTRIAL-Bold.otf") format("opentype");
-}

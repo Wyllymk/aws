@@ -34,16 +34,9 @@
 	  * Add your theme below:
 	  */
 	/*Images*/
-	--image-hero: url("../bet-vault/assets/img/hero.png");
-	--image-winnings: url("../bet-vault/assets/img/winnings.png");
-	--image-bankroll: url("../bet-vault/assets/img/bankroll.png");
-	--image-risk: url("../bet-vault/assets/img/risk.png");
-	--image-faq: url("../bet-vault/assets/img/faq.png");
-	--image-checkout: url("../bet-vault/assets/img/checkout.png");
-	--image-challenge: url("../bet-vault/assets/img/challenge.png");
+	--image-newsletter: url("../theme/assets/img/crissxcross.png");
+
 	/*Shadows*/
-	--drop-shadow-white-glow: 0 0 5px rgba(255, 255, 255, 1);
-	--drop-shadow-brass-nail: 0 0 5px rgba(219, 195, 118, 1);
 	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);
 	/*Fonts*/
 	--font-aeonik-light: "Aeonik-light", sans-serif;
@@ -51,8 +44,6 @@
 		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
 		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
 		"Noto Color Emoji";
-	--font-aeonik-bold: "Aeonik-bold", sans-serif;
 	/*Colors*/
 	--color-mustard-gold: rgba(112, 102, 36, 1);
-	--color-brass-nail: rgba(219, 195, 118, 1);
 }

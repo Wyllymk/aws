@@ -1,0 +1,428 @@
+# Copyright (C) 2025 WyllyMK
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Atomic Web Space 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/atomic-web-space\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-06T09:45:01+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: atomic-web-space\n"
+
+#. Theme Name of the theme
+#: theme
+msgid "Atomic Web Space"
+msgstr ""
+
+#. Theme URI of the theme
+#: theme
+msgid "https://atomicwebspace.com"
+msgstr ""
+
+#. Description of the theme
+#: theme
+msgid "A custom theme based on _tw"
+msgstr ""
+
+#. Author of the theme
+#: theme
+msgid "WyllyMK"
+msgstr ""
+
+#. Author URI of the theme
+#: theme
+msgid "https://underscoretw.com/"
+msgstr ""
+
+#: theme/404.php:40
+msgid "This page couldn’t be found. It may have been removed, renamed, or perhaps it’s drifting in cyberspace."
+msgstr ""
+
+#: theme/archive.php:36
+msgid "%s post found"
+msgid_plural "%s posts found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme/archive.php:120
+msgid "No posts found in this archive. Try exploring another category or date!"
+msgstr ""
+
+#. translators: 1: title.
+#: theme/comments.php:32
+msgid "One comment on “%1$s”"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: theme/comments.php:38
+msgctxt "comments title"
+msgid "%1$s comment on “%2$s”"
+msgid_plural "%1$s comments on “%2$s”"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme/comments.php:84
+msgid "Comments are closed."
+msgstr ""
+
+#: theme/front-page.php:64
+msgid "Featured Post"
+msgstr ""
+
+#: theme/front-page.php:84
+#: theme/front-page.php:126
+msgid "Read Article"
+msgstr ""
+
+#: theme/front-page.php:88
+#: theme/front-page.php:130
+msgid "All Posts →"
+msgstr ""
+
+#: theme/front-page.php:154
+msgid "Featured Articles"
+msgstr ""
+
+#: theme/front-page.php:157
+msgid "Dive into our hand-picked posts offering deep insights into cutting-edge tech trends."
+msgstr ""
+
+#: theme/front-page.php:228
+msgid "No featured posts available."
+msgstr ""
+
+#: theme/front-page.php:247
+msgid "Trending Topics"
+msgstr ""
+
+#: theme/front-page.php:250
+msgid "Explore the hottest tech categories and their latest posts—jump in!"
+msgstr ""
+
+#: theme/front-page.php:303
+msgid "No Image"
+msgstr ""
+
+#: theme/front-page.php:345
+msgid "Read More"
+msgstr ""
+
+#: theme/front-page.php:452
+msgid "Join the WordPress Revolution"
+msgstr ""
+
+#: theme/front-page.php:455
+msgid "Subscribe for the latest WordPress news, insights, and exclusive updates delivered straight to your inbox."
+msgstr ""
+
+#: theme/front-page.php:506
+msgid "Subscribe"
+msgstr ""
+
+#: theme/front-page.php:510
+msgid "By subscribing, you agree to our"
+msgstr ""
+
+#: theme/front-page.php:513
+msgid "Terms"
+msgstr ""
+
+#: theme/front-page.php:515
+msgid "and"
+msgstr ""
+
+#: theme/front-page.php:518
+#: theme/template-parts/layout/footer-content.php:75
+msgid "Privacy Policy"
+msgstr ""
+
+#: theme/functions.php:85
+msgid "Primary"
+msgstr ""
+
+#: theme/functions.php:86
+msgid "Footer Menu"
+msgstr ""
+
+#: theme/functions.php:134
+msgid "Footer"
+msgstr ""
+
+#: theme/functions.php:136
+msgid "Add widgets here to appear in your footer."
+msgstr ""
+
+#: theme/header.php:42
+msgid "Skip to content"
+msgstr ""
+
+#: theme/home.php:114
+msgid "No posts found. Check back later or start creating some tech content!"
+msgstr ""
+
+#: theme/inc/template-functions.php:42
+msgid "Category Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:44
+msgid "Tag Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:46
+msgid "Author Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:48
+msgid "Yearly Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:48
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: theme/inc/template-functions.php:50
+msgid "Monthly Archives: "
+msgstr ""
+
+#: theme/inc/template-functions.php:50
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: theme/inc/template-functions.php:52
+msgid "Daily Archives: "
+msgstr ""
+
+#. translators: %s: Post type singular name
+#. translators: %s: Taxonomy singular name
+#: theme/inc/template-functions.php:57
+#: theme/inc/template-functions.php:64
+msgid "%s Archives"
+msgstr ""
+
+#: theme/inc/template-functions.php:68
+msgid "Archives:"
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: theme/inc/template-functions.php:98
+msgid "Continue reading %s"
+msgstr ""
+
+#: theme/inc/template-functions.php:132
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: theme/inc/template-functions.php:134
+msgid "Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved."
+msgstr ""
+
+#. translators: %s: Comment author link.
+#: theme/inc/template-functions.php:156
+msgid "%s <span class=\"says\">says:</span>"
+msgstr ""
+
+#. translators: 1: Comment date, 2: Comment time.
+#: theme/inc/template-functions.php:171
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: theme/inc/template-functions.php:178
+msgid "Edit"
+msgstr ""
+
+#: theme/inc/template-tags.php:46
+msgid "Posted by"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/inc/template-tags.php:60
+msgid "Leave a comment<span class=\"sr-only\"> on %s</span>"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma.
+#: theme/inc/template-tags.php:82
+#: theme/inc/template-tags.php:93
+#: theme/inc/template-tags.php:143
+#: theme/inc/template-tags.php:154
+msgid ", "
+msgstr ""
+
+#: theme/inc/template-tags.php:87
+#: theme/inc/template-tags.php:148
+msgid "Posted in"
+msgstr ""
+
+#: theme/inc/template-tags.php:98
+#: theme/inc/template-tags.php:159
+msgid "Tags:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/inc/template-tags.php:114
+#: theme/inc/template-tags.php:175
+#: theme/template-parts/content/content-page.php:49
+msgid "Edit <span class=\"sr-only\">%s</span>"
+msgstr ""
+
+#: theme/inc/template-tags.php:266
+msgid "Newer posts"
+msgstr ""
+
+#: theme/inc/template-tags.php:267
+msgid "Older posts"
+msgstr ""
+
+#: theme/page-templates/page-about.php:44
+#: theme/page-templates/page-coming-soon.php:44
+msgid "We're Working on It!"
+msgstr ""
+
+#: theme/page-templates/page-about.php:47
+#: theme/page-templates/page-coming-soon.php:47
+msgid "This page is under development. Stay tuned for exciting updates!"
+msgstr ""
+
+#: theme/page-templates/page-about.php:52
+#: theme/page-templates/page-coming-soon.php:52
+msgid "Go to Homepage"
+msgstr ""
+
+#: theme/page-templates/page-about.php:61
+#: theme/page-templates/page-coming-soon.php:61
+msgid "Coming Soon Image"
+msgstr ""
+
+#. translators: 1: search result title. 2: search term.
+#: theme/search.php:30
+msgid "Search Results for: %s"
+msgstr ""
+
+#: theme/search.php:39
+msgid "%s result found"
+msgid_plural "%s results found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: theme/search.php:116
+msgid "No results found for your search. Try a different query or explore our blog."
+msgstr ""
+
+#: theme/single.php:75
+#: theme/template-parts/content/content-page.php:35
+#: theme/template-parts/content/content-single.php:48
+#: theme/template-parts/content/content.php:38
+msgid "Pages:"
+msgstr ""
+
+#: theme/template-parts/content/content-aside.php:23
+msgid "Menu"
+msgstr ""
+
+#: theme/template-parts/content/content-aside.php:30
+#: theme/template-parts/content/content-header.php:47
+#: theme/template-parts/layout/footer-content.php:45
+#: theme/template-parts/layout/header-content.php:33
+#: theme/template-parts/layout/header-content.php:64
+msgid "Home"
+msgstr ""
+
+#: theme/template-parts/content/content-aside.php:36
+#: theme/template-parts/content/content-header.php:53
+msgid "Plans"
+msgstr ""
+
+#: theme/template-parts/content/content-aside.php:42
+#: theme/template-parts/content/content-header.php:59
+msgid "Evaluation"
+msgstr ""
+
+#: theme/template-parts/content/content-aside.php:48
+#: theme/template-parts/content/content-header.php:65
+msgid "FAQs"
+msgstr ""
+
+#: theme/template-parts/content/content-excerpt.php:20
+#: theme/template-parts/content/content.php:20
+msgctxt "post"
+msgid "Featured"
+msgstr ""
+
+#: theme/template-parts/content/content-header.php:32
+#: theme/template-parts/content/content-header.php:80
+msgid "Get Started"
+msgstr ""
+
+#: theme/template-parts/content/content-header.php:76
+msgid "Login"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:25
+msgid "Search results for:"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:33
+msgid "Nothing Found"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:44
+msgid "Your site is set to show the most recent posts on your homepage, but you haven&rsquo;t published any posts."
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: theme/template-parts/content/content-none.php:51
+msgid "Add or publish posts"
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:61
+msgid "Your search generated no results. Please try a different search."
+msgstr ""
+
+#: theme/template-parts/content/content-none.php:70
+msgid "No content matched your request."
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers.
+#: theme/template-parts/content/content-single.php:35
+msgid "Continue reading<span class=\"sr-only\"> \"%s\"</span>"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:41
+msgid "Company"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:49
+#: theme/template-parts/layout/header-content.php:40
+#: theme/template-parts/layout/header-content.php:68
+msgid "Blog"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:55
+msgid "Support"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:59
+msgid "About Us"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:63
+msgid "Contact"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:68
+msgid "Legal"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:71
+msgid "Terms and Conditions"
+msgstr ""
+
+#: theme/template-parts/layout/footer-content.php:91
+msgid "© %d - %d | <a class=\"text-blue-400 hover:text-blue-300\" href=\"%s\">AWS</a> | All Rights Reserved."
+msgstr ""
