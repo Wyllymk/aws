@@ -438,8 +438,8 @@ get_header();
                     <div
                         class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-gray-800/50 rounded-xl shadow-2xl overflow-hidden">
                         <!-- Image Side -->
-                        <div class="hidden lg:block relative h-80">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80"
+                        <div class="hidden lg:block relative h-full">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/newsletter.png"
                                 alt="Tech Newsletter" class="w-full h-full object-cover opacity-80">
                             <div class="absolute inset-0 bg-gradient-to-r from-gray-900/60 to-transparent"></div>
                         </div>
@@ -447,10 +447,10 @@ get_header();
                         <!-- Form Side -->
                         <div class="p-8 flex flex-col items-center justify-center text-white">
                             <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
-                                <?php esc_html_e('Join the Tech Revolution', 'atomic-web-space'); ?>
+                                <?php esc_html_e('Join the WordPress Revolution', 'atomic-web-space'); ?>
                             </h2>
                             <p class="text-gray-300 text-center mb-6 max-w-md text-base md:text-lg">
-                                <?php esc_html_e('Subscribe for the latest tech news, insights, and exclusive updates delivered straight to your inbox.', 'atomic-web-space'); ?>
+                                <?php esc_html_e('Subscribe for the latest WordPress news, insights, and exclusive updates delivered straight to your inbox.', 'atomic-web-space'); ?>
                             </p>
 
                             <?php
@@ -458,7 +458,7 @@ get_header();
                             if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['newsletter_submit'])) {
                             // Verify nonce for security
                             if (!isset($_POST['newsletter_nonce']) || !wp_verify_nonce($_POST['newsletter_nonce'], 'newsletter_action')) {
-                                echo '<p class="text-red-400 text-start">Security check failed. Please try again.</p>';
+                                echo '<p class="text-red-400 text-start mb-6">Security check failed. Please try again.</p>';
                             } else {
                                 $email = sanitize_email($_POST['email']);
                                 if (is_email($email)) {
@@ -480,15 +480,15 @@ get_header();
                                     );
 
                                     if ($result) {
-                                    echo '<p class="text-green-400 text-start">Thank you for subscribing!</p>';
+                                    echo '<p class="text-green-400 text-start mb-6">Thank you for subscribing!</p>';
                                     } else {
-                                    echo '<p class="text-red-400 text-start">An error occurred. Please try again later.</p>';
+                                    echo '<p class="text-red-400 text-start mb-6">An error occurred. Please try again later.</p>';
                                     }
                                 } else {
-                                    echo '<p class="text-yellow-400 text-start">This email is already subscribed.</p>';
+                                    echo '<p class="text-yellow-400 text-start mb-6">This email is already subscribed.</p>';
                                 }
                                 } else {
-                                echo '<p class="text-red-400 text-start">Please enter a valid email address.</p>';
+                                echo '<p class="text-red-400 text-start mb-6">Please enter a valid email address.</p>';
                                 }
                             }
                             }
