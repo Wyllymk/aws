@@ -67,11 +67,11 @@ defined( 'ABSPATH' ) || exit;
                 <!-- Legal -->
                 <div class="flex flex-col space-y-3">
                     <h6 class="text-white font-semibold text-lg"><?php esc_html_e('Legal', 'atomic-web-space'); ?></h6>
-                    <a href="#"
+                    <a href="<?php echo esc_url(site_url('/terms-and-conditions/')); ?>"
                         class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
                         <?php esc_html_e('Terms and Conditions', 'atomic-web-space'); ?>
                     </a>
-                    <a href="#"
+                    <a href="<?php echo esc_url(site_url('/privacy-policy/')); ?>"
                         class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
                         <?php esc_html_e('Privacy Policy', 'atomic-web-space'); ?>
                     </a>
@@ -99,9 +99,9 @@ defined( 'ABSPATH' ) || exit;
         </div>
 
         <!-- Decorative Elements -->
-        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-10 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-lg animate-pulse"></div>
         <div
-            class="absolute bottom-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl animate-pulse animation-delay-2000">
+            class="absolute bottom-10 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-lg animate-pulse animation-delay-2000">
         </div>
     </div>
 </footer>

@@ -30,15 +30,17 @@ defined( 'ABSPATH' ) || exit;
             <nav class="hidden lg:flex items-center space-x-8">
                 <a href="<?php echo esc_url(site_url('/')); ?>"
                     class="text-gray-300 font-medium text-lg hover:text-blue-400 transition-all duration-300 relative group">
-                    Home
+                    <?php esc_html_e( 'Home', 'atomic-web-space' ); ?>
                     <span
-                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full">
+                    </span>
                 </a>
-                <a href="/blog"
+                <a href="<?php echo esc_url(site_url('/blog/')); ?>"
                     class="text-gray-300 font-medium text-lg hover:text-blue-400 transition-all duration-300 relative group">
-                    Blog
+                    <?php esc_html_e( 'Blog', 'atomic-web-space' ); ?>
                     <span
-                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full">
+                    </span>
                 </a>
             </nav>
 
@@ -59,11 +61,11 @@ defined( 'ABSPATH' ) || exit;
             <div class="flex flex-col items-center py-6 space-y-6">
                 <a href="<?php echo esc_url(site_url('/')); ?>"
                     class="text-gray-300 font-medium text-lg hover:text-blue-400 transition-all duration-300">
-                    Home
+                    <?php esc_html_e( 'Home', 'atomic-web-space' ); ?>
                 </a>
-                <a href="/blog"
+                <a href="<?php echo esc_url(site_url('/blog/')); ?>"
                     class="text-gray-300 font-medium text-lg hover:text-blue-400 transition-all duration-300">
-                    Blog
+                    <?php esc_html_e( 'Blog', 'atomic-web-space' ); ?>
                 </a>
             </div>
         </div>

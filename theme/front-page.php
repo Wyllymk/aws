@@ -296,7 +296,9 @@ get_header();
                                 <?php else : ?>
                                 <div
                                     class="w-full h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                                    <span class="text-gray-400 text-sm">No Image</span>
+                                    <span class="text-gray-400 text-sm">
+                                        <?php esc_html_e( 'No Image', 'atomic-web-space' ); ?>
+                                    </span>
                                 </div>
                                 <?php endif; ?>
                                 <div
@@ -337,7 +339,7 @@ get_header();
                     <div class="mt-12 text-center">
                         <a :href="'/category/' + selectedCategory"
                             class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                            Read More
+                            <?php esc_html_e( 'Read More', 'atomic-web-space' ); ?>
                         </a>
                     </div>
                 </div>
@@ -444,24 +446,75 @@ get_header();
 
                         <!-- Form Side -->
                         <div class="p-8 flex flex-col items-center justify-center text-white">
-                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">Join the Tech
-                                Revolution</h2>
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4">
+                                <?php esc_html_e('Join the Tech Revolution', 'atomic-web-space'); ?>
+                            </h2>
                             <p class="text-gray-300 text-center mb-6 max-w-md text-base md:text-lg">
-                                Subscribe for the latest tech news, insights, and exclusive updates delivered straight
-                                to your inbox.
+                                <?php esc_html_e('Subscribe for the latest tech news, insights, and exclusive updates delivered straight to your inbox.', 'atomic-web-space'); ?>
                             </p>
-                            <form class="flex flex-col sm:flex-row gap-3 w-full max-w-md">
-                                <input type="email" placeholder="Enter your email"
-                                    class="bg-gray-700 text-gray-200 border border-gray-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 transition-all duration-300">
-                                <button
+
+                            <?php
+                            // Handle form submission
+                            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['newsletter_submit'])) {
+                            // Verify nonce for security
+                            if (!isset($_POST['newsletter_nonce']) || !wp_verify_nonce($_POST['newsletter_nonce'], 'newsletter_action')) {
+                                echo '<p class="text-red-400 text-start">Security check failed. Please try again.</p>';
+                            } else {
+                                $email = sanitize_email($_POST['email']);
+                                if (is_email($email)) {
+                                global $wpdb;
+                                $table_name = $wpdb->prefix . 'newsletter_subscribers';
+
+                                // Check if email already exists
+                                $exists = $wpdb->get_var($wpdb->prepare(
+                                    "SELECT COUNT(*) FROM $table_name WHERE email = %s",
+                                    $email
+                                ));
+
+                                if ($exists == 0) {
+                                    // Insert email into custom table
+                                    $result = $wpdb->insert(
+                                    $table_name,
+                                    ['email' => $email, 'subscribed_at' => current_time('mysql')],
+                                    ['%s', '%s']
+                                    );
+
+                                    if ($result) {
+                                    echo '<p class="text-green-400 text-start">Thank you for subscribing!</p>';
+                                    } else {
+                                    echo '<p class="text-red-400 text-start">An error occurred. Please try again later.</p>';
+                                    }
+                                } else {
+                                    echo '<p class="text-yellow-400 text-start">This email is already subscribed.</p>';
+                                }
+                                } else {
+                                echo '<p class="text-red-400 text-start">Please enter a valid email address.</p>';
+                                }
+                            }
+                            }
+                            ?>
+
+                            <form method="POST" class="flex flex-col sm:flex-row gap-3 w-full max-w-md">
+                                <?php wp_nonce_field('newsletter_action', 'newsletter_nonce'); ?>
+                                <input type="email" name="email" placeholder="Enter your email"
+                                    class="bg-gray-700 text-gray-200 border border-gray-600 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 flex-1 transition-all duration-300"
+                                    required>
+                                <button type="submit" name="newsletter_submit"
                                     class="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                                    Subscribe
+                                    <?php esc_html_e( 'Subscribe', 'atomic-web-space' ); ?>
                                 </button>
                             </form>
                             <p class="text-gray-400 text-center text-xs mt-4">
-                                By subscribing, you agree to our
-                                <a href="#" class="text-blue-400 hover:text-blue-300 underline">Terms</a> and
-                                <a href="#" class="text-blue-400 hover:text-blue-300 underline">Privacy Policy</a>.
+                                <?php esc_html_e( 'By subscribing, you agree to our', 'atomic-web-space' ); ?>
+                                <a href="<?php echo esc_url(site_url('/terms-and-conditions/')); ?>"
+                                    class="text-blue-400 hover:text-blue-300 underline">
+                                    <?php esc_html_e( 'Terms', 'atomic-web-space' ); ?>
+                                </a>
+                                <?php esc_html_e( 'and', 'atomic-web-space' ); ?>
+                                <a href="<?php echo esc_url(site_url('/privacy-policy/')); ?>"
+                                    class="text-blue-400 hover:text-blue-300 underline">
+                                    <?php esc_html_e( 'Privacy Policy', 'atomic-web-space' ); ?>
+                                </a>.
                             </p>
                         </div>
                     </div>

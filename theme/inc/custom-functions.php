@@ -205,3 +205,113 @@ function enqueue_admin_scripts($hook) {
     ]);
 }
 add_action('admin_enqueue_scripts', 'enqueue_admin_scripts');
+
+
+// Create table on theme activation
+function atomic_web_space_create_newsletter_table() {
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'newsletter_subscribers';
+  $charset_collate = $wpdb->get_charset_collate();
+
+  $sql = "CREATE TABLE $table_name (
+    id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+    email VARCHAR(100) NOT NULL,
+    subscribed_at DATETIME NOT NULL,
+    PRIMARY KEY (id),
+    UNIQUE KEY email (email)
+  ) $charset_collate;";
+
+  require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+  dbDelta($sql);
+
+  // Store the current DB version
+  update_option('atomic_newsletter_db_version', '1.0');
+}
+register_activation_hook(__FILE__, 'atomic_web_space_create_newsletter_table');
+
+// Check and create table on theme switch or update
+function atomic_web_space_check_newsletter_table() {
+  if (get_option('atomic_newsletter_db_version') !== '1.0') {
+    atomic_web_space_create_newsletter_table();
+  }
+}
+add_action('after_switch_theme', 'atomic_web_space_check_newsletter_table');
+
+// Add Newsletter admin page
+function atomic_web_space_newsletter_menu() {
+  add_submenu_page(
+    'edit.php', // Parent slug (Posts menu)
+    'Newsletter Subscribers',
+    'Newsletter',
+    'manage_options',
+    'newsletter-subscribers',
+    'atomic_web_space_newsletter_page'
+  );
+}
+add_action('admin_menu', 'atomic_web_space_newsletter_menu');
+
+// Render the Newsletter admin page
+function atomic_web_space_newsletter_page() {
+  global $wpdb;
+  $table_name = $wpdb->prefix . 'newsletter_subscribers';
+
+  // Handle bulk delete
+  if (isset($_POST['bulk_delete']) && !empty($_POST['subscriber_ids']) && check_admin_referer('bulk_delete_newsletter', 'bulk_delete_nonce')) {
+    $ids = array_map('intval', $_POST['subscriber_ids']);
+    $ids_placeholder = implode(',', array_fill(0, count($ids), '%d'));
+    $wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id IN ($ids_placeholder)", ...$ids));
+    echo '<div class="notice notice-success is-dismissible"><p>Selected subscribers deleted.</p></div>';
+  }
+
+  // Fetch subscribers
+  $subscribers = $wpdb->get_results("SELECT * FROM $table_name ORDER BY subscribed_at DESC");
+
+  ?>
+<div class="wrap">
+    <h1>Newsletter Subscribers</h1>
+    <?php if (!empty($subscribers)) : ?>
+    <form method="POST">
+        <?php wp_nonce_field('bulk_delete_newsletter', 'bulk_delete_nonce'); ?>
+        <div class="tablenav top">
+            <div class="alignleft actions">
+                <select name="action">
+                    <option value="-1">Bulk Actions</option>
+                    <option value="delete">Delete</option>
+                </select>
+                <input type="submit" name="bulk_delete" class="button action" value="Apply">
+            </div>
+        </div>
+        <table class="wp-list-table widefat fixed striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="manage-column column-cb check-column">
+                        <input type="checkbox" id="cb-select-all">
+                    </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subscribed On</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($subscribers as $subscriber) : ?>
+                <tr>
+                    <th scope="row" class="check-column">
+                        <input type="checkbox" name="subscriber_ids[]" value="<?php echo esc_attr($subscriber->id); ?>">
+                    </th>
+                    <td><?php echo esc_html($subscriber->email); ?></td>
+                    <td><?php echo esc_html($subscriber->subscribed_at); ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </form>
+    <?php else : ?>
+    <p>No subscribers yet.</p>
+    <?php endif; ?>
+</div>
+<script>
+document.getElementById('cb-select-all').addEventListener('change', function() {
+    document.querySelectorAll('input[name="subscriber_ids[]"]').forEach(cb => cb.checked = this.checked);
+});
+</script>
+<?php
+}
