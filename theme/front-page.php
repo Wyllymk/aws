@@ -276,7 +276,7 @@ get_header();
                     <div id="trending-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <?php
                         $all_posts = new WP_Query([
-                            'posts_per_page' => -1, // Load all posts upfront
+                            'posts_per_page' => 6, // Load all posts upfront
                             'post_status' => 'publish',
                         ]);
 
