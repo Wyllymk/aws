@@ -34,7 +34,7 @@
 	  * Add your theme below:
 	  */
 	/*Images*/
-	--image-newsletter: url("../theme/assets/img/crissxcross.png");
+	--image-newsletter: url("../atomic-web-space/assets/img/crissxcross.png");
 
 	/*Shadows*/
 	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);
