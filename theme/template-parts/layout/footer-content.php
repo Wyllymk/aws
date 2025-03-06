@@ -36,34 +36,33 @@ defined( 'ABSPATH' ) || exit;
 
             <!-- Navigation Links -->
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-12">
-                <!-- Support -->
-                <div class="flex flex-col space-y-3">
-                    <h6 class="text-white font-semibold text-lg"><?php esc_html_e('Support', 'atomic-web-space'); ?>
-                    </h6>
-                    <a href="#"
-                        class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
-                        <?php esc_html_e('Contact', 'atomic-web-space'); ?>
-                    </a>
-                    <a href="#"
-                        class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
-                        <?php esc_html_e('Blog', 'atomic-web-space'); ?>
-                    </a>
-                </div>
-
                 <!-- Company -->
                 <div class="flex flex-col space-y-3">
                     <h6 class="text-white font-semibold text-lg"><?php esc_html_e('Company', 'atomic-web-space'); ?>
                     </h6>
-                    <a href="#"
+                    <a href="<?php echo esc_url(site_url('/')); ?>"
+                        class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
+                        <?php esc_html_e('Home', 'atomic-web-space'); ?>
+                    </a>
+                    <a href="<?php echo esc_url(site_url('/blog/')); ?>"
+                        class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
+                        <?php esc_html_e('Blog', 'atomic-web-space'); ?>
+                    </a>
+                </div>
+                <!-- Support -->
+                <div class="flex flex-col space-y-3">
+                    <h6 class="text-white font-semibold text-lg">
+                        <?php esc_html_e('Support', 'atomic-web-space'); ?>
+                    </h6>
+                    <a href="<?php echo esc_url(site_url('/')); ?>"
                         class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
                         <?php esc_html_e('About Us', 'atomic-web-space'); ?>
                     </a>
-                    <a href="#"
+                    <a href="<?php echo esc_url(site_url('/')); ?>"
                         class="text-gray-400 text-sm hover:text-blue-400 transition-all duration-300 hover:translate-x-1">
-                        <?php esc_html_e('FAQ', 'atomic-web-space'); ?>
+                        <?php esc_html_e('Contact', 'atomic-web-space'); ?>
                     </a>
                 </div>
-
                 <!-- Legal -->
                 <div class="flex flex-col space-y-3">
                     <h6 class="text-white font-semibold text-lg"><?php esc_html_e('Legal', 'atomic-web-space'); ?></h6>
