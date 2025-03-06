@@ -364,3 +364,83 @@ document.querySelectorAll('.home-post-card').forEach((card) => {
 		);
 	}
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('.trending-post-card').forEach((card) => {
+		const thumbnail = card.querySelector('.trending-post-card__thumbnail');
+		if (thumbnail) {
+			card.addEventListener('mouseenter', () =>
+				gsap.to(thumbnail, {
+					scale: 1.05,
+					duration: 0.3,
+				})
+			);
+			card.addEventListener('mouseleave', () =>
+				gsap.to(thumbnail, {
+					scale: 1,
+					duration: 0.3,
+				})
+			);
+		}
+	});
+});
+
+function trendingTopics() {
+	return {
+		selectedCategory: '<?php echo esc_attr($first_category_slug); ?>',
+		selectedCategoryName: '<?php echo esc_html($categories[0]->name); ?>',
+
+		isVisible(categorySlugs) {
+			// Show post if its categories include the selected category
+			const categories = categorySlugs.split(' ');
+			return categories.includes(this.selectedCategory);
+		},
+
+		selectCategory(slug) {
+			this.selectedCategory = slug;
+			this.selectedCategoryName = this.getCategoryName(slug);
+			this.animatePosts();
+		},
+
+		getCategoryName(slug) {
+			const categories =
+				<?php echo json_encode(array_map(function($cat) { return ['slug' => $cat->slug, 'name' => $cat->name]; }, $categories)); ?>;
+			const category = categories.find(cat => cat.slug === slug);
+			return category ? category.name : '';
+		},
+
+		animatePosts() {
+			const posts = document.querySelectorAll('.trending-post-card');
+			let visibleCount = 0;
+			posts.forEach(post => {
+				const isVisible = post.dataset.categories.split(' ').includes(this
+					.selectedCategory);
+				if (isVisible && visibleCount < 3) { // Limit to 3 posts
+					post.classList.remove('hidden');
+					visibleCount++;
+				} else {
+					post.classList.add('hidden');
+				}
+			});
+			// Animate only visible posts
+			const visiblePosts = document.querySelectorAll('.trending-post-card:not(.hidden)');
+			gsap.fromTo(visiblePosts, {
+					scale: 0.9,
+					y: 50
+				}, // Start smaller and lower
+				{
+					scale: 1,
+					y: 0,
+					duration: 0.8,
+					stagger: 0.2,
+					ease: 'power3.out',
+					overwrite: 'auto'
+				}
+			);
+		},
+
+		initAnimations() {
+			this.animatePosts(); // Show first category's posts on load
+		}
+	};
+}

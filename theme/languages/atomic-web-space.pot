@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-03-06T09:45:01+00:00\n"
+"POT-Creation-Date: 2025-03-06T09:51:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: atomic-web-space\n"
@@ -112,31 +112,31 @@ msgstr ""
 msgid "Read More"
 msgstr ""
 
-#: theme/front-page.php:452
+#: theme/front-page.php:437
 msgid "Join the WordPress Revolution"
 msgstr ""
 
-#: theme/front-page.php:455
+#: theme/front-page.php:440
 msgid "Subscribe for the latest WordPress news, insights, and exclusive updates delivered straight to your inbox."
 msgstr ""
 
-#: theme/front-page.php:506
+#: theme/front-page.php:491
 msgid "Subscribe"
 msgstr ""
 
-#: theme/front-page.php:510
+#: theme/front-page.php:495
 msgid "By subscribing, you agree to our"
 msgstr ""
 
-#: theme/front-page.php:513
+#: theme/front-page.php:498
 msgid "Terms"
 msgstr ""
 
-#: theme/front-page.php:515
+#: theme/front-page.php:500
 msgid "and"
 msgstr ""
 
-#: theme/front-page.php:518
+#: theme/front-page.php:503
 #: theme/template-parts/layout/footer-content.php:75
 msgid "Privacy Policy"
 msgstr ""
