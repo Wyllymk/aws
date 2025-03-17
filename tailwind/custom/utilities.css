@@ -9,6 +9,9 @@
 @utility bg-newsletter {
 	background-image: var(--image-newsletter);
 }
+@utility bg-trending {
+	background-image: var(--image-trending);
+}
 .custom-shadow {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

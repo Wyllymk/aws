@@ -236,13 +236,11 @@ get_header();
             <section id="trending-topics" class="relative bg-gray-900 py-16 overflow-hidden">
                 <!-- Background Effects -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/30 via-gray-900 to-purple-900/30"></div>
-                <div
-                    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/circuit-pattern.png')]">
-                </div>
+                <div class="absolute inset-0 opacity-10 bg-trending"> </div>
 
                 <!-- Content Container -->
                 <div class="relative container mx-auto px-4 max-w-7xl z-10" x-data="trendingTopics()"
-                    x-init="initAnimations">
+                    x-init="filterPosts">
                     <h2 class="text-3xl sm:text-4xl font-bold text-center text-white mb-4">
                         <?php esc_html_e('Trending Topics', 'atomic-web-space'); ?>
                     </h2>
@@ -254,22 +252,24 @@ get_header();
                     <div class="flex flex-wrap justify-center gap-4 mb-12">
                         <?php
                         $categories = get_categories([
-                            'hide_empty' => true, // Still hide categories with no posts
-                            'number'     => 10    // Limit to 10 categories
+                            'hide_empty' => true,
+                            'number'     => 10,
+                            'orderby'    => 'count',
+                            'order'      => 'DESC',
                         ]);
                         $first = true;
                         foreach ($categories as $category) :
                         ?>
                         <button
                             class="trending-category cursor-pointer inline-block bg-gray-800 text-gray-200 py-2 px-5 rounded-full text-sm font-medium border border-gray-700/50 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:shadow-lg hover:border-transparent"
-                            :class="{ 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg border-transparent': selectedCategory === '<?php echo $category->slug; ?>' }"
-                            @click="selectCategory('<?php echo $category->slug; ?>')">
+                            :class="{ 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg border-transparent': selectedCategory === '<?php echo esc_attr($category->slug); ?>' }"
+                            @click="selectCategory('<?php echo esc_attr($category->slug); ?>')">
                             <?php echo esc_html($category->name); ?>
                         </button>
                         <?php
                             if ($first) {
-                                $first_category_slug = $category->slug;
-                                $first = false;
+                            $first_category_slug = $category->slug;
+                            $first = false;
                             }
                         endforeach;
                         ?>
@@ -279,29 +279,26 @@ get_header();
                     <div id="trending-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <?php
                         $all_posts = new WP_Query([
-                            'posts_per_page' => 6, // Load all posts upfront
-                            'post_status' => 'publish',
+                            'posts_per_page' => -1,
+                            'post_status'   => 'publish',
                         ]);
-
                         if ($all_posts->have_posts()) :
                             while ($all_posts->have_posts()) : $all_posts->the_post();
                             $post_categories = wp_get_post_categories(get_the_ID(), ['fields' => 'slugs']);
-                            $category_slugs = implode(' ', $post_categories); // Space-separated list of category slugs
+                            $category_slugs = implode(' ', $post_categories);
                         ?>
-                        <div class="trending-post-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-                            data-categories="<?php echo esc_attr($category_slugs); ?>"
-                            :class="{ 'hidden': !isVisible('<?php echo esc_attr($category_slugs); ?>') }">
+                        <div class="trending-post-card bg-gray-800 rounded-xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hidden"
+                            data-categories="<?php echo esc_attr($category_slugs); ?>">
                             <a href="<?php the_permalink(); ?>" class="block relative">
                                 <?php if (has_post_thumbnail()) : ?>
                                 <img src="<?php echo esc_url(get_the_post_thumbnail_url(null, 'medium')); ?>"
                                     alt="<?php the_title_attribute(); ?>"
-                                    class="trending-post-card__thumbnail w-full h-48 object-cover transition-transform duration-300 brightness-90">
+                                    class="w-full h-48 object-cover transition-transform duration-300 brightness-90">
                                 <?php else : ?>
                                 <div
                                     class="w-full h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                                    <span class="text-gray-400 text-sm">
-                                        <?php esc_html_e( 'No Image', 'atomic-web-space' ); ?>
-                                    </span>
+                                    <span
+                                        class="text-gray-400 text-sm"><?php esc_html_e('No Image', 'atomic-web-space'); ?></span>
                                 </div>
                                 <?php endif; ?>
                                 <div
@@ -311,7 +308,7 @@ get_header();
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold text-white mb-2">
                                     <a href="<?php the_permalink(); ?>"
-                                        class="trending-post-card__title hover:text-blue-300 transition duration-200">
+                                        class="hover:text-blue-300 transition duration-200">
                                         <?php the_title(); ?>
                                     </a>
                                 </h3>
@@ -320,8 +317,8 @@ get_header();
                                 <div class="flex items-center justify-between">
                                     <span class="text-gray-300 text-xs"><?php echo get_the_date(); ?></span>
                                     <?php 
-                                        $categories = get_the_category();
-                                        if (!empty($categories)) :
+                                    $categories = get_the_category();
+                                    if (!empty($categories)) :
                                     ?>
                                     <span
                                         class="px-2 py-1 bg-blue-600/20 text-blue-200 rounded-full text-xs font-medium">
@@ -342,69 +339,65 @@ get_header();
                     <div class="mt-12 text-center">
                         <a :href="'/category/' + selectedCategory"
                             class="inline-block bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                            <?php esc_html_e( 'Read More', 'atomic-web-space' ); ?>
+                            <?php esc_html_e('Read More in', 'atomic-web-space'); ?> <span
+                                x-text="getCategoryName(selectedCategory)"></span>
                         </a>
                     </div>
                 </div>
             </section>
 
             <script>
+            /**
+             * Alpine.js component for trending topics
+             * Manages category selection and post filtering
+             */
             function trendingTopics() {
                 return {
+                    // Initialize with the first category's slug
                     selectedCategory: '<?php echo esc_attr($first_category_slug); ?>',
-                    selectedCategoryName: '<?php echo esc_html($categories[0]->name); ?>',
 
-                    isVisible(categorySlugs) {
-                        // Show post if its categories include the selected category
-                        const categories = categorySlugs.split(' ');
-                        return categories.includes(this.selectedCategory);
-                    },
+                    // Category data with slugs and names
+                    categories: <?php 
+                                echo json_encode(array_map(function($cat) {
+                                    return ['slug' => $cat->slug, 'name' => $cat->name];
+                                }, $categories));
+                                ?>,
 
+                    /**
+                     * Select a category and filter posts
+                     * @param {string} slug - The category slug to select
+                     */
                     selectCategory(slug) {
                         this.selectedCategory = slug;
-                        this.selectedCategoryName = this.getCategoryName(slug);
-                        this.animatePosts();
+                        this.filterPosts();
                     },
 
-                    getCategoryName(slug) {
-                        const categories =
-                            <?php echo json_encode(array_map(function($cat) { return ['slug' => $cat->slug, 'name' => $cat->name]; }, $categories)); ?>;
-                        const category = categories.find(cat => cat.slug === slug);
-                        return category ? category.name : '';
-                    },
-
-                    animatePosts() {
+                    /**
+                     * Filter posts to show only the first 6 matching the selected category
+                     */
+                    filterPosts() {
                         const posts = document.querySelectorAll('.trending-post-card');
-                        let visibleCount = 0;
+                        let count = 0;
+
                         posts.forEach(post => {
-                            const isVisible = post.dataset.categories.split(' ').includes(this
-                                .selectedCategory);
-                            if (isVisible && visibleCount < 3) { // Limit to 3 posts
+                            const categories = post.dataset.categories.split(' ');
+                            if (categories.includes(this.selectedCategory) && count < 6) {
                                 post.classList.remove('hidden');
-                                visibleCount++;
+                                count++;
                             } else {
                                 post.classList.add('hidden');
                             }
                         });
-                        // Animate only visible posts
-                        const visiblePosts = document.querySelectorAll('.trending-post-card:not(.hidden)');
-                        gsap.fromTo(visiblePosts, {
-                                scale: 0.9,
-                                y: 50
-                            }, // Start smaller and lower
-                            {
-                                scale: 1,
-                                y: 0,
-                                duration: 0.8,
-                                stagger: 0.2,
-                                ease: 'power3.out',
-                                overwrite: 'auto'
-                            }
-                        );
                     },
 
-                    initAnimations() {
-                        this.animatePosts(); // Show first category's posts on load
+                    /**
+                     * Get the category name from its slug
+                     * @param {string} slug - The category slug
+                     * @returns {string} - The category name
+                     */
+                    getCategoryName(slug) {
+                        const category = this.categories.find(cat => cat.slug === slug);
+                        return category ? category.name : 'Category';
                     }
                 };
             }

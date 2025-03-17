@@ -15,7 +15,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-window.Alpine = Alpine;
+window.Alpine = Alpine; // Expose to global scope
 
 document.addEventListener('DOMContentLoaded', () => {
 	const plans = document.querySelectorAll('.plan-item'); // Select all plans
