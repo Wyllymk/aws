@@ -36,6 +36,8 @@
 	/*Images*/
 	--image-newsletter: url("../atomic-web-space/assets/img/crissxcross.png");
 	--image-trending: url("../atomic-web-space/assets/img/concrete-wall.png");
+	--image-dark-leather: url("../atomic-web-space/assets/img/dark-leather.png");
+	--image-diamonds: url("../atomic-web-space/assets/img/diamonds.png");
 
 	/*Shadows*/
 	--drop-shadow-mustard-gold: 0 0 5px rgba(112, 102, 36, 1);

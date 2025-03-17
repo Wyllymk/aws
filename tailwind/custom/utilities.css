@@ -12,6 +12,12 @@
 @utility bg-trending {
 	background-image: var(--image-trending);
 }
+@utility bg-dark-leather {
+	background-image: var(--image-dark-leather);
+}
+@utility bg-diamonds {
+	background-image: var(--image-diamonds);
+}
 .custom-shadow {
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

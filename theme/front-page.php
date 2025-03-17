@@ -144,8 +144,7 @@ get_header();
                 <!-- Background Effects -->
                 <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-blue-900/50 opacity-50">
                 </div>
-                <div
-                    class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/circuit-pattern.png')]">
+                <div class="absolute inset-0 opacity-50 bg-dark-leather">
                 </div>
 
                 <!-- Content Container -->
@@ -236,7 +235,7 @@ get_header();
             <section id="trending-topics" class="relative bg-gray-900 py-16 overflow-hidden">
                 <!-- Background Effects -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/30 via-gray-900 to-purple-900/30"></div>
-                <div class="absolute inset-0 opacity-10 bg-trending"> </div>
+                <div class="absolute inset-0 opacity-100 bg-trending"> </div>
 
                 <!-- Content Container -->
                 <div class="relative container mx-auto px-4 max-w-7xl z-10" x-data="trendingTopics()"
